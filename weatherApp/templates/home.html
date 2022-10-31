@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content_block %}
+
+<div class="jumbotron">
+    <h1 class="display-4 text-center">Weather Information</h1>
+    <hr class="my-4">
+    <div class='row'>
+        <div class='col-4'>
+        </div>
+        <div class='col-4'>
+            <form method='POST' autocomplete='off'>
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control" name="city" aria-describedby="textHelp" placeholder="Enter City">
+                    <small id="emailHelp" class="form-text text-muted">Enter name of city to check its weather</small>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mt-4">Submit</button>
+            </form>
+        </div>
+        <div class='col-4'>
+        </div>
+    </div>
+    
+    <div class="card mt-4" style="color: #4B515D; border-radius: 35px;">
+        <div class="card-body p-4">
+
+          <div class="d-flex">
+            <h6 class="flex-grow-1">{{name}}</h6>
+            <h6>{{time}}</h6>
+          </div>
+
+          <div class="d-flex flex-column text-center mt-5 mb-4">
+            <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{temp_c}}°C / {{temp_k}}°K </h6>
+            <span class="small" style="color: #868B94">{{weather_desc | title}}</span>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <div class="flex-grow-1" style="font-size: 1rem;">
+              <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{wind}} km/h
+                </span></div>
+              <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{humidity}}% </span>
+              </div>
+              <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1"> 0.2h </span>
+              </div>
+            </div>
+            <div>
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp"
+                width="100px">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+{% endblock content_block %}
